@@ -109,7 +109,8 @@
 
 - (IBAction)btnAction_previous:(id)sender {
     isScroll = NO;
-    if(collectionView_images.contentOffset.x <= 0){
+    if(collectionView_images.contentOffset.x <= 0){//reached first
+
         NSString *string = array_images.lastObject;
         [array_images
          removeObjectAtIndex:array_images.count-1];
@@ -127,7 +128,7 @@
 - (IBAction)btnAction_next:(id)sender {
     isScroll = NO;
     
-    if(collectionView_images.contentSize.width >= (array_images.count * (collectionView_images.bounds.size.width/3))){
+    if(collectionView_images.contentSize.width >= (array_images.count * (collectionView_images.bounds.size.width/3))){//reached end
         NSString *string = [array_images
                             objectAtIndex:0];
         [array_images insertObject:string atIndex:array_images.count];
