@@ -19,12 +19,11 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7d3-i0-BdW">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="517"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="510"/>
                             </view>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="hH5-LO-ds7">
                                 <rect key="frame" x="0.0" y="547" width="375" height="120"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="120" id="J6E-gZ-38W"/>
                                 </constraints>
@@ -61,15 +60,27 @@
                                 </connections>
                             </collectionView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gMc-SM-gaG">
-                                <rect key="frame" x="327" y="517" width="48" height="30"/>
-                                <state key="normal" title="  Next  "/>
+                                <rect key="frame" x="312" y="510" width="63" height="37"/>
+                                <fontDescription key="fontDescription" name="ChalkboardSE-Regular" family="Chalkboard SE" pointSize="17"/>
+                                <state key="normal" title="  Next  ">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="btnAction_next:" destination="BYZ-38-t0r" eventType="touchUpInside" id="DEU-Ik-h0q"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yTK-7s-5XF">
-                                <rect key="frame" x="0.0" y="517" width="75" height="30"/>
-                                <state key="normal" title="  Previous  "/>
+                                <rect key="frame" x="0.0" y="510" width="95" height="37"/>
+                                <fontDescription key="fontDescription" name="ChalkboardSE-Bold" family="Chalkboard SE" pointSize="17"/>
+                                <state key="normal" title="  Previous  ">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="btnAction_previous:" destination="BYZ-38-t0r" eventType="touchUpInside" id="dVQ-8d-kjm"/>
+                                </connections>
                             </button>
                         </subviews>
-                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="gMc-SM-gaG" firstAttribute="centerY" secondItem="yTK-7s-5XF" secondAttribute="centerY" id="AVh-5O-lCx"/>
                             <constraint firstItem="hH5-LO-ds7" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="E38-2f-VOt"/>

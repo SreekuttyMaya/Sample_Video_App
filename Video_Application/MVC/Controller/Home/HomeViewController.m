@@ -16,10 +16,11 @@
     
     __weak IBOutlet UICollectionView *collectionView_images;
     __weak IBOutlet UIView *view_video;
-    __weak IBOutlet UIScrollView *scrollView;
     
     NSMutableArray *array_images;
     AVPlayer *songPlayer;
+    
+    BOOL isScroll;
 }
 @end
 
@@ -38,9 +39,11 @@
 
 -(void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
+    //setup player
     [self playVideoSetUp];
-    
 }
+
+#pragma mark - Custom Methods
 
 -(void)playVideoSetUp {
     
@@ -60,13 +63,14 @@
     });
 }
 
+
 - (void)videoDidFinish:(id)videoNotification {
     dispatch_async(dispatch_get_main_queue(), ^{
         [songPlayer play];
     });
 }
 
-#pragma mark - Collection view Delegates
+#pragma mark - Collection View Datasource
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
     return array_images.count;
@@ -86,20 +90,56 @@
     return cell;
 }
 
+#pragma mark - Collection View Delegate
+
 -(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath  {
     [collectionView deselectItemAtIndexPath:indexPath animated:YES];
-    
-}
-
-- (void)collectionView:(UICollectionView *)collectionView willDisplayCell:(UICollectionViewCell *)cell forItemAtIndexPath:(NSIndexPath *)indexPath {
 }
 
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath {
+    
+    ///to display three cells
     CGFloat screenWidth = [UIScreen mainScreen].bounds.size.width;
     float cellWidth = screenWidth / 3.0;
     CGSize size = CGSizeMake(cellWidth, cellWidth);
     return size;
+}
+
+#pragma mark - IBActions
+
+- (IBAction)btnAction_previous:(id)sender {
+    isScroll = NO;
+    if(collectionView_images.contentOffset.x <= 0){
+        NSString *string = array_images.lastObject;
+        [array_images
+         removeObjectAtIndex:array_images.count-1];
+        [array_images insertObject:string atIndex:0];
+        [collectionView_images reloadData];
+    } else {
+        CGFloat contentOffset =floor(collectionView_images.contentOffset.x + (collectionView_images.bounds.size.width/3));
+        
+        CGRect frame = CGRectMake(contentOffset, collectionView_images.contentOffset.y, collectionView_images.frame.size.width, collectionView_images.frame.size.height);
+        [collectionView_images scrollRectToVisible:frame animated:YES];
+    }
+}
+
+
+- (IBAction)btnAction_next:(id)sender {
+    isScroll = NO;
     
+    if(collectionView_images.contentSize.width >= (array_images.count * (collectionView_images.bounds.size.width/3))){
+        NSString *string = [array_images
+                            objectAtIndex:0];
+        [array_images insertObject:string atIndex:array_images.count];
+        [array_images
+         removeObjectAtIndex:0];
+        [collectionView_images reloadData];
+    } else {
+        CGFloat contentOffset =floor(collectionView_images.contentOffset.x + (collectionView_images.bounds.size.width/3));
+        
+        CGRect frame = CGRectMake(contentOffset, collectionView_images.contentOffset.y, collectionView_images.frame.size.width, collectionView_images.frame.size.height);
+        [collectionView_images scrollRectToVisible:frame animated:YES];
+    }
 }
 
 - (void)didReceiveMemoryWarning {
