@@ -7,8 +7,7 @@ Video_App
 Features
 
 Play video in background
-Next button will show next image in a infinite loop
-Previous button will show next image in a infinite loop
+Carousel will show a list of 7 different images in infinite loop.
 
 Requirements
 
