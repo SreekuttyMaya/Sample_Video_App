@@ -35,6 +35,7 @@
     for (int i = 0; i < 7; i++) {
         [array_images addObject:[NSString stringWithFormat:@"https://picsum.photos/%d/%d",(i+1)*100,(i+2)*100]];
     }
+    [collectionView_images reloadData];
 }
 
 -(void)viewDidAppear:(BOOL)animated {
