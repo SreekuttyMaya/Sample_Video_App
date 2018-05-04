@@ -19,11 +19,12 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7d3-i0-BdW">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="510"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <color key="backgroundColor" red="0.85882352939999995" green="0.16693793400000001" blue="0.039215686270000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </view>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="hH5-LO-ds7">
                                 <rect key="frame" x="0.0" y="547" width="375" height="120"/>
-                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="120" id="J6E-gZ-38W"/>
                                 </constraints>
@@ -61,6 +62,7 @@
                             </collectionView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gMc-SM-gaG">
                                 <rect key="frame" x="312" y="510" width="63" height="37"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <fontDescription key="fontDescription" name="ChalkboardSE-Regular" family="Chalkboard SE" pointSize="17"/>
                                 <state key="normal" title="  Next  ">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -71,6 +73,7 @@
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yTK-7s-5XF">
                                 <rect key="frame" x="0.0" y="510" width="95" height="37"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <fontDescription key="fontDescription" name="ChalkboardSE-Bold" family="Chalkboard SE" pointSize="17"/>
                                 <state key="normal" title="  Previous  ">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -82,21 +85,23 @@
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="7d3-i0-BdW" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="6cx-43-rnK"/>
                             <constraint firstItem="gMc-SM-gaG" firstAttribute="centerY" secondItem="yTK-7s-5XF" secondAttribute="centerY" id="AVh-5O-lCx"/>
                             <constraint firstItem="hH5-LO-ds7" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="E38-2f-VOt"/>
+                            <constraint firstItem="7d3-i0-BdW" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="EgX-ON-pe7"/>
                             <constraint firstItem="hH5-LO-ds7" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="GLX-d8-9hC"/>
-                            <constraint firstItem="7d3-i0-BdW" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="J59-uX-0E9"/>
-                            <constraint firstItem="gMc-SM-gaG" firstAttribute="top" secondItem="7d3-i0-BdW" secondAttribute="bottom" id="Kl2-UD-VqQ"/>
                             <constraint firstItem="hH5-LO-ds7" firstAttribute="top" secondItem="gMc-SM-gaG" secondAttribute="bottom" id="LtX-3q-jod"/>
                             <constraint firstItem="hH5-LO-ds7" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="M5D-g2-Vva"/>
-                            <constraint firstItem="7d3-i0-BdW" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="PZs-7c-Etm"/>
-                            <constraint firstItem="7d3-i0-BdW" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="afI-uK-hwW"/>
+                            <constraint firstItem="7d3-i0-BdW" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="UWV-C7-Nxk"/>
+                            <constraint firstItem="7d3-i0-BdW" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="cbD-fl-5Z7"/>
                             <constraint firstItem="gMc-SM-gaG" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="g88-Hc-V9Q"/>
                             <constraint firstItem="yTK-7s-5XF" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="txd-Pz-Hux"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <connections>
+                        <outlet property="btn_next" destination="gMc-SM-gaG" id="dkH-or-9CZ"/>
+                        <outlet property="btn_previous" destination="yTK-7s-5XF" id="pbz-yo-k9U"/>
                         <outlet property="collectionView_images" destination="hH5-LO-ds7" id="dQZ-7c-PYX"/>
                         <outlet property="view_video" destination="7d3-i0-BdW" id="Cb9-1c-2XU"/>
                     </connections>
@@ -104,6 +109,21 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="116" y="117.39130434782609"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="icR-h2-NtM">
+            <objects>
+                <viewController id="lES-lK-POO" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="VHv-aY-DQS">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="GLd-fQ-bMa"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="kok-Pk-qj3" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1142" y="439"/>
         </scene>
     </scenes>
 </document>

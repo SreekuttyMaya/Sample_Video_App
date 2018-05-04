@@ -354,9 +354,45 @@
 			files = (
 			);
 			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-Video_Application/Pods-Video_Application-resources.sh",
+				"${PODS_ROOT}/VKFoundation/Assets/VKFoundation_themes.plist",
+				"${PODS_ROOT}/VKFoundation/Assets/VKPickerButton_bg.png",
+				"${PODS_ROOT}/VKFoundation/Assets/VKPickerButton_bg@2x.png",
+				"${PODS_ROOT}/VKFoundation/Assets/VKPickerButton_cross.png",
+				"${PODS_ROOT}/VKFoundation/Assets/VKPickerButton_cross@2x.png",
+				"${PODS_ROOT}/VKFoundation/Assets/VKScrubber_max.png",
+				"${PODS_ROOT}/VKFoundation/Assets/VKScrubber_max@2x.png",
+				"${PODS_ROOT}/VKFoundation/Assets/VKScrubber_min.png",
+				"${PODS_ROOT}/VKFoundation/Assets/VKScrubber_min@2x.png",
+				"${PODS_ROOT}/VKFoundation/Assets/VKScrubber_thumb.png",
+				"${PODS_ROOT}/VKFoundation/Assets/VKScrubber_thumb@2x.png",
+				"${PODS_ROOT}/VKVideoPlayer/Assets/VKVideoPlayer_close.png",
+				"${PODS_ROOT}/VKVideoPlayer/Assets/VKVideoPlayer_close@2x.png",
+				"${PODS_ROOT}/VKVideoPlayer/Assets/VKVideoPlayer_cross.png",
+				"${PODS_ROOT}/VKVideoPlayer/Assets/VKVideoPlayer_cross@2x.png",
+				"${PODS_ROOT}/VKVideoPlayer/Assets/VKVideoPlayer_next.png",
+				"${PODS_ROOT}/VKVideoPlayer/Assets/VKVideoPlayer_next@2x.png",
+				"${PODS_ROOT}/VKVideoPlayer/Assets/VKVideoPlayer_pause.png",
+				"${PODS_ROOT}/VKVideoPlayer/Assets/VKVideoPlayer_pause@2x.png",
+				"${PODS_ROOT}/VKVideoPlayer/Assets/VKVideoPlayer_pause_big.png",
+				"${PODS_ROOT}/VKVideoPlayer/Assets/VKVideoPlayer_pause_big@2x.png",
+				"${PODS_ROOT}/VKVideoPlayer/Assets/VKVideoPlayer_play.png",
+				"${PODS_ROOT}/VKVideoPlayer/Assets/VKVideoPlayer_play@2x.png",
+				"${PODS_ROOT}/VKVideoPlayer/Assets/VKVideoPlayer_play_big.png",
+				"${PODS_ROOT}/VKVideoPlayer/Assets/VKVideoPlayer_play_big@2x.png",
+				"${PODS_ROOT}/VKVideoPlayer/Assets/VKVideoPlayer_rewind.png",
+				"${PODS_ROOT}/VKVideoPlayer/Assets/VKVideoPlayer_rewind@2x.png",
+				"${PODS_ROOT}/VKVideoPlayer/Assets/VKVideoPlayer_zoom_in.png",
+				"${PODS_ROOT}/VKVideoPlayer/Assets/VKVideoPlayer_zoom_in@2x.png",
+				"${PODS_ROOT}/VKVideoPlayer/Assets/VKVideoPlayer_zoom_out.png",
+				"${PODS_ROOT}/VKVideoPlayer/Assets/VKVideoPlayer_zoom_out@2x.png",
+				"${PODS_ROOT}/VKVideoPlayer/Classes/ios/VKVideoPlayerView.xib",
+				"${PODS_ROOT}/VKVideoPlayer/Classes/ios/VKVideoPlayerViewController~ipad.xib",
+				"${PODS_ROOT}/VKVideoPlayer/Classes/ios/VKVideoPlayerViewController~iphone.xib",
 			);
 			name = "[CP] Copy Pods Resources";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -476,6 +512,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_BITCODE = YES;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
@@ -531,6 +568,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_BITCODE = YES;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
@@ -554,10 +592,13 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = 6H86N9RWRB;
+				ENABLE_BITCODE = YES;
 				INFOPLIST_FILE = Video_Application/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.videoapp.sample;
+				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = com.3e.Aboard;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -569,10 +610,13 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = 6H86N9RWRB;
+				ENABLE_BITCODE = YES;
 				INFOPLIST_FILE = Video_Application/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.videoapp.sample;
+				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = com.3e.Aboard;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};

@@ -10,17 +10,23 @@
 #import "UIImageView+WebCache.h"
 #import <UIView+WebCache.h>
 #import <AVKit/AVKit.h>
+#import <MediaPlayer/MediaPlayer.h>
+#define DegreesToRadians(x) ((x) * M_PI / 180.0)
 
+
+#define VideoURL @"http://184.72.239.149/vod/smil:BigBuckBunny.smil/playlist.m3u8"
 @interface HomeViewController ()
 {
     
     __weak IBOutlet UICollectionView *collectionView_images;
     __weak IBOutlet UIView *view_video;
-    
+    __weak IBOutlet UIButton *btn_previous;
+    __weak IBOutlet UIView *btn_next;
+
     NSMutableArray *array_images;
     AVPlayer *songPlayer;
-    
-    BOOL isScroll;
+    AVPlayerViewController *controller;
+    BOOL isScroll,isFullScreen;
 }
 @end
 
@@ -33,36 +39,58 @@
     //load image to load in carousel
     array_images = [NSMutableArray new];
     for (int i = 0; i < 7; i++) {
-        [array_images addObject:[NSString stringWithFormat:@"https://picsum.photos/%d/%d",(i+1)*100,(i+2)*100]];
+        [array_images addObject:[NSString stringWithFormat:@"https://picsum.photos/%d/%d",i+100,i+100]];
     }
     [collectionView_images reloadData];
+   
+    
+ 
 }
 
 -(void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
     //setup player
-    [self playVideoSetUp];
+    NSString *urlString=[NSString stringWithFormat:@"%@",VideoURL];
+    AVAsset *asset = [AVAsset assetWithURL:[NSURL URLWithString:urlString]];
+    AVPlayerItem *avPlayerItem = [[AVPlayerItem alloc]initWithAsset:asset];
+    [self playVideoSetUpWithAVplayerItem:avPlayerItem];
+  
+
 }
+
 
 #pragma mark - Custom Methods
 
--(void)playVideoSetUp {
+-(void)playVideoSetUpWithAVplayerItem:(AVPlayerItem *)avPlayerItem {
+   
+  
     
-    NSString *urlString=[NSString stringWithFormat:@"%@",@"http://184.72.239.149/vod/smil:BigBuckBunny.smil/playlist.m3u8"];
-    AVAsset *asset = [AVAsset assetWithURL:[NSURL URLWithString:urlString]];
-    AVPlayerItem *avPlayerItem = [[AVPlayerItem alloc]initWithAsset:asset];
     songPlayer = [AVPlayer playerWithPlayerItem:avPlayerItem];
-    AVPlayerLayer *avPlayerLayer = [AVPlayerLayer playerLayerWithPlayer: songPlayer];
-    avPlayerLayer.frame = view_video.layer.bounds;
-    songPlayer.muted = YES;
-    [view_video.layer addSublayer:avPlayerLayer];
     
-    [[NSNotificationCenter defaultCenter] removeObserver:self name:AVPlayerItemTimeJumpedNotification object:[songPlayer currentItem]];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(videoDidFinish:) name:AVPlayerItemDidPlayToEndTimeNotification object:[songPlayer currentItem]];
+    AVPlayerLayer *playerLayer = [AVPlayerLayer layer];
+    playerLayer.player = songPlayer;
+    playerLayer.frame = CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height);
+    playerLayer.backgroundColor = [UIColor blackColor].CGColor;
+    playerLayer.videoGravity = AVLayerVideoGravityResizeAspectFill;
+
+                                   
+                                   
+   
+    [self.view.layer addSublayer:playerLayer];
+    songPlayer.muted = YES;
+    [self.view bringSubviewToFront:collectionView_images];
+    [self.view bringSubviewToFront:btn_previous];
+    [self.view bringSubviewToFront:btn_next];
+  
+
     dispatch_async(dispatch_get_main_queue(), ^{
         [songPlayer play];
     });
+
+
 }
+
+
 
 
 - (void)videoDidFinish:(id)videoNotification {
@@ -90,6 +118,7 @@
     cell.tag =indexPath.row;
     return cell;
 }
+
 
 #pragma mark - Collection View Delegate
 
