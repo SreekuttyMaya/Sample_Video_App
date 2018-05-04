@@ -86,6 +86,7 @@
     dispatch_async(dispatch_get_main_queue(), ^{
         [songPlayer play];
     });
+    //view_video.transform=CGAffineTransformMakeRotation(M_PI / 2);
 
 
 }
