@@ -69,14 +69,14 @@
     
     AVPlayerLayer *playerLayer = [AVPlayerLayer layer];
     playerLayer.player = songPlayer;
-    playerLayer.frame = CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height);
+    playerLayer.frame = CGRectMake(0, 0, view_video.frame.size.width, view_video.frame.size.height);
     playerLayer.backgroundColor = [UIColor blackColor].CGColor;
     playerLayer.videoGravity = AVLayerVideoGravityResizeAspectFill;
 
                                    
                                    
    
-    [self.view.layer addSublayer:playerLayer];
+    [view_video.layer addSublayer:playerLayer];
     songPlayer.muted = YES;
     [self.view bringSubviewToFront:collectionView_images];
     [self.view bringSubviewToFront:btn_previous];
@@ -86,7 +86,7 @@
     dispatch_async(dispatch_get_main_queue(), ^{
         [songPlayer play];
     });
-    //view_video.transform=CGAffineTransformMakeRotation(M_PI / 2);
+    view_video.transform=CGAffineTransformMakeRotation(M_PI / 2);
 
 
 }
