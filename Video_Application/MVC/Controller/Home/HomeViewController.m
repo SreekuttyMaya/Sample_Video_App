@@ -12,8 +12,7 @@
 #import <AVKit/AVKit.h>
 #import <MediaPlayer/MediaPlayer.h>
 #define DegreesToRadians(x) ((x) * M_PI / 180.0)
-
-
+//"http://184.72.239.149/vod/smil:BigBuckBunny.smil/playlist.m3u8"
 #define VideoURL @"http://184.72.239.149/vod/smil:BigBuckBunny.smil/playlist.m3u8"
 @interface HomeViewController ()
 {
@@ -62,8 +61,6 @@
 #pragma mark - Custom Methods
 
 -(void)playVideoSetUpWithAVplayerItem:(AVPlayerItem *)avPlayerItem {
-   
-  
     
     songPlayer = [AVPlayer playerWithPlayerItem:avPlayerItem];
     
@@ -72,22 +69,26 @@
     playerLayer.frame = CGRectMake(0, 0, view_video.frame.size.width, view_video.frame.size.height);
     playerLayer.backgroundColor = [UIColor blackColor].CGColor;
     playerLayer.videoGravity = AVLayerVideoGravityResizeAspectFill;
-
-                                   
-                                   
    
     [view_video.layer addSublayer:playerLayer];
     songPlayer.muted = YES;
-    [self.view bringSubviewToFront:collectionView_images];
-    [self.view bringSubviewToFront:btn_previous];
-    [self.view bringSubviewToFront:btn_next];
+
   
 
     dispatch_async(dispatch_get_main_queue(), ^{
         [songPlayer play];
     });
-    view_video.transform=CGAffineTransformMakeRotation(M_PI / 2);
 
+    [UIView animateWithDuration: 1.0 delay: 0 options: UIViewAnimationOptionCurveLinear animations:^{
+        view_video.transform = CGAffineTransformMakeRotation(-(M_PI / 2));
+       
+    } completion:^(BOOL finished) {
+
+        playerLayer.frame = CGRectMake(0, 0, view_video.frame.size.height * 2, view_video.frame.size.width);
+        playerLayer.videoGravity = AVLayerVideoGravityResizeAspectFill;
+
+        view_video.frame  = CGRectMake(0, 0, self.view.frame.size.width,  self.view.frame.size.height);
+    }];
 
 }
 
